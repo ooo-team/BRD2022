@@ -14,12 +14,9 @@ def get_countours(img):
 def get_BB(img, contours):
     contours_poly = [None] * len(contours)
     boundRect = [None] * len(contours)
-    # centers = [None] * len(contours)
-    # radius = [None] * len(contours)
     for i, c in enumerate(contours):
         contours_poly[i] = cv.approxPolyDP(c, 3, True)
         boundRect[i] = cv.boundingRect(contours_poly[i])
-        # centers[i], radius[i] = cv.minEnclosingCircle(contours_poly[i])
     im = np.zeros(img.shape, np.uint8)
     for i in range(len(contours)):
         color = (0, 255, 0)
@@ -34,7 +31,6 @@ def get_BB(img, contours):
             color,
             2,
         )
-        # cv.circle(im, (int(centers[i][0]), int(centers[i][1])), int(radius[i]), color, 2)
     return im
 
 
