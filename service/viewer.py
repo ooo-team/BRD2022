@@ -1,6 +1,7 @@
 import cv2 as cv
 import numpy as np
 
+x_thresh, y_thresh = 45, 45
 
 def get_countours(img):
     imgray = cv.Canny(img, 100, 200)
@@ -21,21 +22,22 @@ def get_BB(img, contours):
     for i in range(len(contours)):
         color = (0, 255, 0)
         cv.drawContours(im, contours_poly, i, color)
-        cv.rectangle(
-            im,
-            (int(boundRect[i][0]), int(boundRect[i][1])),
-            (
-                int(boundRect[i][0] + boundRect[i][2]),
-                int(boundRect[i][1] + boundRect[i][3]),
-            ),
-            color,
-            2,
-        )
+        if boundRect[i][2] > x_thresh and boundRect[i][3] > y_thresh:
+            cv.rectangle(
+                im,
+                (int(boundRect[i][0]), int(boundRect[i][1])),
+                (
+                    int(boundRect[i][0] + boundRect[i][2]),
+                    int(boundRect[i][1] + boundRect[i][3]),
+                ),
+                color,
+                2,
+            )
     return im
 
 
 # define a video capture object
-vid = cv.VideoCapture(0)
+vid = cv.VideoCapture(2)
 
 while True:
     _, frame = vid.read()

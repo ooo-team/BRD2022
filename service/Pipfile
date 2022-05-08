@@ -12,6 +12,7 @@ pillow = "*"
 black = "*"
 pycodestyle = "*"
 pydocstyle = "*"
+mypy = "*"
 
 [requires]
 python_version = "3.10"
