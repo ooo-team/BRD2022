@@ -1,6 +1,0 @@
-[submodule "robot-code/Adafruit-PWM-Servo-Driver-Library"]
-	path = robot-code/Adafruit-PWM-Servo-Driver-Library
-	url = git@github.com:adafruit/Adafruit-PWM-Servo-Driver-Library.git
-[submodule "robot-code/gprs-shield"]
-	path = robot-code/gprs-shield
-	url = git@github.com:amperka/gprs-shield.git
